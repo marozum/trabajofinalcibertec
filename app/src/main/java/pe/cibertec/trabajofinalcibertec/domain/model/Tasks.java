@@ -14,7 +14,7 @@ import pe.cibertec.trabajofinalcibertec.data.entity.TasksEntity;
 
 public class Tasks {
 
-    private Object objectId;
+    private String objectId;
 
     private String title;
 
@@ -23,11 +23,11 @@ public class Tasks {
     private String dateTime;
 
 
-    public Object getObjectId() {
+    public String getObjectId() {
         return objectId;
     }
 
-    public void setObjectId(Object objectId) {
+    public void setObjectId(String objectId) {
         this.objectId = objectId;
     }
 

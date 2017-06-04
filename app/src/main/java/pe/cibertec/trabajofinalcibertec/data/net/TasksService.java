@@ -29,7 +29,7 @@ public interface TasksService {
 
     @Headers("Content-Type: application/json")
     @GET("Reminder/{objectId}")
-     Call<TasksEntity> getTask(@Path("objectId") String objectId);
+     Call<TasksEntity> getTask(@Header("user-token") String token,@Path("objectId") String objectId);
 
     @Headers("Content-Type: application/json")
     @POST("Reminder")
@@ -41,6 +41,6 @@ public interface TasksService {
 
     @Headers("Content-Type: application/json")
     @DELETE("Reminder/{objectId}")
-    Call<TasksEntity> deleteTasks(@Header("user-token") String token, @Body TasksEntity tasksEntity);
+    Call<TasksEntity> deleteTasks(@Header("user-token") String token,@Path("objectId") String objectId);
 
 }

@@ -17,7 +17,7 @@ public class TasksEntity implements RealmModel {
 
     @SerializedName("objectId")
     @Expose
-    private Object objectId;
+    private String objectId;
     @SerializedName("title")
     @Expose
     private String title;
@@ -28,11 +28,11 @@ public class TasksEntity implements RealmModel {
     @Expose
     private String dateTime;
 
-    public Object getObjectId() {
+    public String getObjectId() {
         return objectId;
     }
 
-    public void setObjectId(Object objectId) {
+    public void setObjectId(String objectId) {
         this.objectId = objectId;
     }
 

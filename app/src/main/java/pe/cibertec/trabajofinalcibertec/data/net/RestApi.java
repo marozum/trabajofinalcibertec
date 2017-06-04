@@ -18,15 +18,15 @@ public interface RestApi {
 
     void loginUsers(UsersEntity usersEntity, Callback<UsersEntity> callback);
 
-    void getTasksList(Callback<List<TasksEntity>> callBack);
+    void getTasksList(String user_token,Callback<List<TasksEntity>> callBack);
 
-    void getTask(Callback<TasksEntity> callBack);
+    void getTask(String user_token,TasksEntity tasksEntity,Callback<TasksEntity> callBack);
 
-    void insertTask(Callback<TasksEntity> callBack);
+    void insertTask(String user_token,TasksEntity tasksEntity,Callback<TasksEntity> callBack);
 
-    void updateTask(Callback<TasksEntity> callBack);
+    void updateTask(String user_token,TasksEntity tasksEntity,Callback<TasksEntity> callBack);
 
-    void deleteTask(Callback<TasksEntity> callBack);
+    void deleteTask(String user_token,TasksEntity tasksEntity,Callback<TasksEntity> callBack);
 
     interface Callback<T>{
         void onSuccess(T response);
