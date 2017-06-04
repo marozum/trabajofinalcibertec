@@ -37,9 +37,25 @@ public class NetworkUsersDataSource implements UsersDataSource{
 
     }
 
+
+        @Override
+        public void usersEntityUsers(UsersEntity usersEntity, final DataSourceCallback<UsersEntity> callback) {
+            /*this.restApi.insertUsers(usersEntity, new RestApi.Callback<UsersEntity>() {
+                @Override
+                public void onSuccess(UsersEntity response) {
+                    callback.onSuccess(response);
+                }
+
+                @Override
+                public void onError(Throwable e) {
+                    callback.onError(e);
+                }
+            });*/
+        }
+
     @Override
-    public void usersEntityUsers(UsersEntity usersEntity, final DataSourceCallback<UsersEntity> callback) {
-        this.restApi.insertUsers(usersEntity, new RestApi.Callback<UsersEntity>() {
+    public void usersEntityLogin(UsersEntity usersEntity, final DataSourceCallback<UsersEntity> callback) {
+        this.restApi.loginUsers(usersEntity, new RestApi.Callback<UsersEntity>() {
             @Override
             public void onSuccess(UsersEntity response) {
                 callback.onSuccess(response);

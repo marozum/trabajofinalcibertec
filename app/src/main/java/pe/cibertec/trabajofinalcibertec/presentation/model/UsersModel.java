@@ -1,40 +1,26 @@
-package pe.cibertec.trabajofinalcibertec.data.entity;
-
-
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
-
-import io.realm.RealmModel;
-
+package pe.cibertec.trabajofinalcibertec.presentation.model;
 
 /**
- * Created by USUARIO on 2/06/2017.
+ * Created by USUARIO on 3/06/2017.
  */
 
-public class UsersEntity implements RealmModel {
-
-    @SerializedName("objectId")
-    @Expose
+public class UsersModel {
     private String objectId;
-    @SerializedName("login")
-    @Expose
+
     private String email;
-    @SerializedName("password")
-    @Expose
+
     private String password;
-    @SerializedName("name")
-    @Expose
+
     private String name;
-    @SerializedName("user-token")
-    @Expose
+
     private String userToken;
+
+    public UsersModel(String objectId) {
+        this.objectId = objectId;
+    }
 
     public String getObjectId() {
         return objectId;
-    }
-
-    public void setObjectId(String objectId) {
-        this.objectId = objectId;
     }
 
     public String getEmail() {

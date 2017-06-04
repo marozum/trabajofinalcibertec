@@ -15,12 +15,12 @@ public class Users {
 
     private String userToken;
 
-    public String getObjectId() {
-        return objectId;
+    public Users(String objectId) {
+        this.objectId = objectId;
     }
 
-    public void setObjectId(String objectId) {
-        this.objectId = objectId;
+    public String getObjectId() {
+        return objectId;
     }
 
     public String getEmail() {

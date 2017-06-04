@@ -40,4 +40,9 @@ public class DiskUsersDataSource implements UsersDataSource{
     public void usersEntityUsers(UsersEntity usersEntity, DataSourceCallback<UsersEntity> callback) {
 
     }
+
+    @Override
+    public void usersEntityLogin(UsersEntity usersEntity, DataSourceCallback<UsersEntity> callback) {
+
+    }
 }

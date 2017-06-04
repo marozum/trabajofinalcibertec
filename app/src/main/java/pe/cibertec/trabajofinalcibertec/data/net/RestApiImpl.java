@@ -3,10 +3,13 @@ package pe.cibertec.trabajofinalcibertec.data.net;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.util.Log;
 
 import java.io.IOException;
 import java.util.List;
 
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import pe.cibertec.trabajofinalcibertec.data.entity.UsersEntity;
 import pe.cibertec.trabajofinalcibertec.data.exception.NetworkException;
 import retrofit2.Call;
@@ -25,8 +28,14 @@ public class RestApiImpl implements RestApi{
 
     public RestApiImpl(Context context) {
         this.context = context;
+        HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
+        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                .addInterceptor(loggingInterceptor)
+                .build();
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(UsersService.BASE_URL)
+                .client(okHttpClient)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         this.usersService = retrofit.create(UsersService.class);
@@ -53,27 +62,35 @@ public class RestApiImpl implements RestApi{
     }
 
     @Override
-    public void insertUsers(UsersEntity usersEntity, Callback<UsersEntity> callback) {
-            if (hasConnection()){
-                Call<UsersEntity> call = usersService.insertUsers(usersEntity);
-                try{
-                    Response<UsersEntity> response = call.execute();
-                    if (response.isSuccessful()){
-                        callback.onSuccess(response.body());
-                    }else{
-                        callback.onError(new NetworkException());
-                    }
-                }catch (IOException e){
+    public void loginUsers(UsersEntity usersEntity, Callback<UsersEntity> callback) {
+        Log.i("Se cayó","1");
+        if (hasConnection()){
+            Log.i("Se cayó","2");
+            Call<UsersEntity> call = usersService.loginUsers(usersEntity);
+            try{
+                Response<UsersEntity> response = call.execute();
+                Log.i("Se cayó","3");
+                if (response.isSuccessful()){
+                    Log.i("Se cayó","4");
+                    callback.onSuccess(response.body());
+                    Log.i("Respuesta :"," "+response.body());
+                }else{
+                    Log.i("Se cayó","5");
                     callback.onError(new NetworkException());
                 }
+            }catch (IOException e){
+                callback.onError(new NetworkException());
             }
+        }
+
     }
+
 
     private boolean hasConnection(){
         boolean isConnected;
-        ConnectivityManager manager = (ConnectivityManager)this.context
+        ConnectivityManager connectivityManager = (ConnectivityManager)this.context
                 .getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = manager.getActiveNetworkInfo();
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
         isConnected = (networkInfo != null && networkInfo.isConnectedOrConnecting());
         return isConnected;
     }

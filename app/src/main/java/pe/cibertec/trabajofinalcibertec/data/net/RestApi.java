@@ -15,7 +15,7 @@ public interface RestApi {
 
     void getUsersList(Callback<List<UsersEntity>> callback);
 
-    void insertUsers(UsersEntity usersEntity, Callback<UsersEntity> callback);
+    void loginUsers(UsersEntity usersEntity, Callback<UsersEntity> callback);
 
     interface Callback<T>{
         void onSuccess(T response);
