@@ -31,9 +31,6 @@ public class DiskUsersDataSource implements UsersDataSource{
 
             }
         });
-
-
-
     }
 
     @Override

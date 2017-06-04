@@ -34,4 +34,22 @@ public class TasksEntityDataMapper {
         }
         return tasksList;
     }
+
+    //Así cambiamos la data obtenida puesto que estamos enviando toda la clase y no sólo parámetos
+    public TasksEntity sendItTransform(Tasks tasks) {
+        TasksEntity tasksEntity = new TasksEntity();
+        tasksEntity.setObjectId(tasks.getObjectId());
+        tasksEntity.setTitle(tasks.getTitle());
+        tasksEntity.setRemember(tasks.isRemember());
+        tasksEntity.setDateTime(tasks.getDateTime());
+        return tasksEntity;
+    }
+    //De igual manera pasamos la lista a Entity
+    public List<TasksEntity> sendItTransform(List<Tasks> tasksList) {
+        List<TasksEntity> tasksEntityList = new ArrayList<>();
+        for (Tasks tasks: tasksList) {
+            tasksEntityList.add(sendItTransform(tasks));
+        }
+        return tasksEntityList;
+    }
 }
