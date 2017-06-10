@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="F:\AndroidAvanzado\TrabajoFinalCibertec\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="caff8e51a24901cfc9cd7e1cf83d84f4cb0c103b">
+        <dex dex="F:\AndroidAvanzado\TrabajoFinalCibertec\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_6369d8c0df7ec890c7fb858c8ade12dd365c4bcd\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\USUARIO\.android\build-cache\9c790117e2241ad1832ddfe07bc1232ef7c325f1\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="07d6ee506b0d643cac58d5f1a514a802d359dc87">
+        <dex dex="F:\AndroidAvanzado\TrabajoFinalCibertec\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_a0f72e29587d872e809481c0d1d47233d948a29d\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\USUARIO\.gradle\caches\modules-2\files-2.1\io.realm\realm-annotations\3.3.1\bacd2ccd9a7f55c4205e02ad4d9183813d0bdcc3\realm-annotations-3.3.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="bacd2ccd9a7f55c4205e02ad4d9183813d0bdcc3">
+        <dex dex="F:\AndroidAvanzado\TrabajoFinalCibertec\app\build\intermediates\transforms\dex\debug\folders\1000\10\realm-annotations-3.3.1_da1e04bd68a062ca2bdfd535c61406f6518f2f58\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\USUARIO\.android\build-cache\efc6466faee6b6f090c32c687b61a68da3e49454\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="b64dd5f01bc37de289f90fd59299b0c76d119611">
+        <dex dex="F:\AndroidAvanzado\TrabajoFinalCibertec\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_4ecfb253cfaf74c1a9b920c2941e1c0617a0abd7\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="F:\AndroidAvanzado\TrabajoFinalCibertec\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="2ce67f7dd725683294c03a08edd5c11e080428ed">
+        <dex dex="F:\AndroidAvanzado\TrabajoFinalCibertec\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_dfd3f1e63f89e74c3c5b70d329bb634c1d801dc8\classes.dex" />
+    </item>
+
+</items>
