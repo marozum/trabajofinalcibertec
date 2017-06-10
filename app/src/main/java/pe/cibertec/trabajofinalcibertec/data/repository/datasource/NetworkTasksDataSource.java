@@ -24,7 +24,7 @@ public class NetworkTasksDataSource implements TasksDataSource{
 
     @Override
     public void tasksEntityList(String user_token, final DataSourceCallback<List<TasksEntity>> callback) {
-        this.restApi.getTasksList(new RestApi.Callback<List<TasksEntity>>() {
+        this.restApi.getTasksList(user_token, new RestApi.Callback<List<TasksEntity>>() {
             @Override
             public void onSuccess(List<TasksEntity> response) {
                 tasksCache.put(response);
@@ -40,7 +40,7 @@ public class NetworkTasksDataSource implements TasksDataSource{
 
     @Override
     public void tasksEntity(String user_token, TasksEntity tasksEntity, final DataSourceCallback<TasksEntity> callback) {
-        this.restApi.getTask(new RestApi.Callback<TasksEntity>() {
+        this.restApi.getTask(user_token, tasksEntity, new RestApi.Callback<TasksEntity>() {
             @Override
             public void onSuccess(TasksEntity response) {
                 callback.onSuccess(response);
@@ -55,7 +55,7 @@ public class NetworkTasksDataSource implements TasksDataSource{
 
     @Override
     public void tasksEntityInsert(String user_token, TasksEntity tasksEntity, final DataSourceCallback<TasksEntity> callback) {
-            this.restApi.insertTask(new RestApi.Callback<TasksEntity>() {
+            this.restApi.insertTask(user_token, tasksEntity, new RestApi.Callback<TasksEntity>() {
                 @Override
                 public void onSuccess(TasksEntity response) {
                     callback.onSuccess(response);
@@ -70,7 +70,7 @@ public class NetworkTasksDataSource implements TasksDataSource{
 
     @Override
     public void tasksEntityUpdate(String user_token, TasksEntity tasksEntity, final DataSourceCallback<TasksEntity> callback) {
-        this.restApi.updateTask(new RestApi.Callback<TasksEntity>() {
+        this.restApi.updateTask(user_token, tasksEntity, new RestApi.Callback<TasksEntity>() {
             @Override
             public void onSuccess(TasksEntity response) {
                 callback.onSuccess(response);
@@ -85,7 +85,7 @@ public class NetworkTasksDataSource implements TasksDataSource{
 
     @Override
     public void tasksEntityDelete(String user_token, TasksEntity tasksEntity, final DataSourceCallback<TasksEntity> callback) {
-        this.restApi.deleteTask(new RestApi.Callback<TasksEntity>() {
+        this.restApi.deleteTask(user_token, tasksEntity, new RestApi.Callback<TasksEntity>() {
             @Override
             public void onSuccess(TasksEntity response) {
                 callback.onSuccess(response);

@@ -8,7 +8,6 @@ import pe.cibertec.trabajofinalcibertec.data.repository.datasource.UsersDataSour
 import pe.cibertec.trabajofinalcibertec.domain.executor.JobExecutor;
 import pe.cibertec.trabajofinalcibertec.domain.executor.UIThread;
 import pe.cibertec.trabajofinalcibertec.domain.model.Users;
-import pe.cibertec.trabajofinalcibertec.domain.repository.RepositoryCallback;
 import pe.cibertec.trabajofinalcibertec.domain.repository.UserRepository;
 import pe.cibertec.trabajofinalcibertec.domain.usecase.LoginUser;
 import pe.cibertec.trabajofinalcibertec.domain.usecase.UseCase;
@@ -16,13 +15,9 @@ import pe.cibertec.trabajofinalcibertec.presentation.UsersView;
 import pe.cibertec.trabajofinalcibertec.presentation.model.UsersModel;
 import pe.cibertec.trabajofinalcibertec.presentation.model.mapper.UsersModelDataMapper;
 
-/**
- * Created by USUARIO on 3/06/2017.
- */
-
 public class UsersPresenter extends BasePresenter<UsersView>{
 
-    private final LoginUser loginUser;
+    private final LoginUser loginUseCase;
     private final UsersModelDataMapper usersModelDataMapper;
 
     public UsersPresenter(UsersView view) {
@@ -30,7 +25,7 @@ public class UsersPresenter extends BasePresenter<UsersView>{
         UserRepository userRepository = new UsersDataRepository(
                 new UsersDataSourceFactory(view.context()),
                 new UsersEntityDataMapper());
-            this.loginUser = new LoginUser(userRepository,
+            this.loginUseCase = new LoginUser(userRepository,
                     new JobExecutor(),new UIThread());
         this.usersModelDataMapper = new UsersModelDataMapper();
 
@@ -55,8 +50,8 @@ public class UsersPresenter extends BasePresenter<UsersView>{
 
     public void login(UsersModel usersModel){
        // showLoadingView();
-        loginUser.setParams(usersModelDataMapper.sendItTransform(usersModel));
-        loginUser.execute(new UseCase.Callback<Users>() {
+        loginUseCase.setParams(usersModelDataMapper.sendItTransform(usersModel));
+        loginUseCase.execute(new UseCase.Callback<Users>() {
             @Override
             public void onSuccess(Users users) {
                 // hideLoadingView();

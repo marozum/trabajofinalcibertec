@@ -5,10 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import pe.cibertec.trabajofinalcibertec.R;
+import pe.cibertec.trabajofinalcibertec.presentation.util.Constants;
 import pe.cibertec.trabajofinalcibertec.presentation.view.fragment.UserLoginFragment;
-import pe.cibertec.trabajofinalcibertec.presentation.view.fragment.UserRegisterFragment;
 
-public class UserLoginActivity extends AppCompatActivity {
+public class UserLoginActivity extends AppCompatActivity implements UserLoginFragment.OnEventLoginListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +19,18 @@ public class UserLoginActivity extends AppCompatActivity {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.add(android.R.id.content, new UserLoginFragment());
             ft.commit();
+        }
+    }
+
+    @Override
+    public void onEventLogin(String user_token, Integer action) {
+        if(action.equals(Constants.ACTION_LOGIN_CANCELAR)){
+            finish();
+        }
+
+        if(action.equals(Constants.ACTION_LOGIN_INGRESAR)){
+
+            finish();
         }
     }
 }

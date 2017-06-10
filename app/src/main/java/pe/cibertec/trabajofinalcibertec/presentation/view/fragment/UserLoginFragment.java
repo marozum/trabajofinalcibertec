@@ -3,7 +3,6 @@ package pe.cibertec.trabajofinalcibertec.presentation.view.fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +19,7 @@ import pe.cibertec.trabajofinalcibertec.R;
 import pe.cibertec.trabajofinalcibertec.presentation.UsersView;
 import pe.cibertec.trabajofinalcibertec.presentation.model.UsersModel;
 import pe.cibertec.trabajofinalcibertec.presentation.presenter.UsersPresenter;
+import pe.cibertec.trabajofinalcibertec.presentation.util.Constants;
 
 /**
  * Created by USUARIO on 3/06/2017.
@@ -28,15 +28,10 @@ import pe.cibertec.trabajofinalcibertec.presentation.presenter.UsersPresenter;
 public class UserLoginFragment extends Fragment
     implements UsersView,View.OnClickListener{
 
-
-    @BindView(R.id.txtEmail)
-    TextView txtEmail;
+    public OnEventLoginListener mListener;
 
     @BindView(R.id.edtEmail)
     EditText edtEmail;
-
-    @BindView(R.id.txtPassword)
-    TextView txtPassword;
 
     @BindView(R.id.edtPassword)
     EditText edtPassword;
@@ -56,11 +51,6 @@ public class UserLoginFragment extends Fragment
     private Unbinder unbinder;
 
     private UsersPresenter usersPresenter;
-
-    public static final UserRegisterFragment newInstance(){
-        UserRegisterFragment f = new UserRegisterFragment();
-        return f;
-    }
 
     public UserLoginFragment(){
         //Required empty public constructor
@@ -86,6 +76,23 @@ public class UserLoginFragment extends Fragment
             usersPresenter = new  UsersPresenter(this);
         }
         btnLogin.setOnClickListener(this);
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof OnEventLoginListener) {
+            mListener = (OnEventLoginListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " must implement OnEventLoginListener");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
     }
 
     @Override
@@ -126,6 +133,9 @@ public class UserLoginFragment extends Fragment
                 usersPresenter.login(usersModel);//todo agregar el presenter
 
                 break;
+            case R.id.btnCancel:
+                mListener.onEventLogin(null, Constants.ACTION_LOGIN_CANCELAR);
+                break;
             default:
                 break;
         }
@@ -135,5 +145,10 @@ public class UserLoginFragment extends Fragment
     public void renderResponseLogin(UsersModel userModel) {
         //Aquí obtenemos el user Token , se perdieron varios datos en el proceso xD
         txtResponse.setText(userModel.getUserToken());
+        mListener.onEventLogin(userModel.getUserToken(), Constants.ACTION_LOGIN_INGRESAR);
+    }
+
+    public interface OnEventLoginListener{
+        void onEventLogin(String user_token, Integer action);
     }
 }
